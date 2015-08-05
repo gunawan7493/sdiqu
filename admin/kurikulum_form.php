@@ -1,5 +1,5 @@
  
-  <?php if ($aksi = 'tambah');
+  <?php error_reporting(0); if ($aksi = 'tambah');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
 
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">kurikulum</label>
-    <div class="col-sm-9">
+    <div class="col-sm-4">
       <input type="text" class="form-control required" id="kurikulum" name='kurikulum'
       value='<?=$kurikulum->kurikulum?>'
        placeholder="Uraian kurikulum ">
@@ -43,13 +43,20 @@ if (isset($_GET['id'])) {
  </div>
 
     <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">ID Mapel</label>
-    <div class="col-sm-3">
-      <input type="text" class="form-control required" id="id_mapel" name='id_mapel'
-      value='<?=$kurikulum->id_mapel?>'
-       placeholder="Tanggal Akhir kurikulum">
-    </div>
- </div>
+    <label for="inputEmail3" class="col-sm-3 control-label">Mata Pelajaran</label>
+    <div class="col-sm-2">     
+      <?php
+    include './inc/config.php';
+    
+    $sql = mysql_query("select * from tb_mapel");
+    echo '<select name="id_mapel" class="form-control required">';
+      while($mapel = mysql_fetch_array($sql)){
+echo '<option value="'.$mapel['id_mapel'].'">'.$mapel['mata_pelajaran'].'</option>';
+}
+echo '</select>';
+     ?>
+</div>
+</div>
 
    
 

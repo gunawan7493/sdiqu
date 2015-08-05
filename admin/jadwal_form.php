@@ -1,5 +1,5 @@
  
-  <?php if ($aksi = 'tambah');
+  <?php error_reporting(0); if ($aksi = 'tambah');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -17,13 +17,21 @@ if (isset($_GET['id'])) {
                       <h2 style="text-align: center"> Form Data jadwal</h2>
                       <input type='hidden' name='id' value='<?=$id?>'>
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">ID Kelas</label>
-    <div class="col-sm-2">
-      <input type="text" class="form-control required" id="id_kelas" name='id_kelas'
-      value='<?=$jadwal->id_kelas?>'
-       placeholder="Masukan id_kelas siswa">
+    <label for="inputEmail3" class="col-sm-3 control-label">Kelas</label>
+    <div class="col-sm-1">     
+      <?php
+    include './inc/config.php';
+    
+    $sql = mysql_query("select * from tb_kelas");
+    echo '<select name="id_kelas" class="form-control required">';
+      while($kelas = mysql_fetch_array($sql)){
+echo '<option value="'.$kelas['id_kelas'].'">'.$kelas['kelas'].'</option>';
+}
+echo '</select>';
+     ?>
     </div>
-  </div>
+ </div>
+
 
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">ID Guru</label>
@@ -35,32 +43,53 @@ if (isset($_GET['id'])) {
  </div>
 
     <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">ID Mata Pelajaran</label>
-    <div class="col-sm-2">
-      <input type="text" class="form-control required" id="id_mapel" name='id_mapel'
-      value='<?=$jadwal->id_mapel?>'
-       placeholder="Masukan id_mapel ">
-    </div>
- </div>
+    <label for="inputEmail3" class="col-sm-3 control-label">Mata Pelajaran</label>
+    <div class="col-sm-2">     
+      <?php
+    include './inc/config.php';
+    
+    $sql = mysql_query("select * from tb_mapel");
+    echo '<select name="id_mapel" class="form-control required">';
+      while($mapel = mysql_fetch_array($sql)){
+echo '<option value="'.$mapel['id_mapel'].'">'.$mapel['mata_pelajaran'].'</option>';
+}
+echo '</select>';
+     ?>
+</div>
+</div>
 
-    <div class="form-group">
+<div>
     <label for="inputEmail3" class="col-sm-3 control-label">Hari</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control required" id="hari" name='hari'
-      value='<?=$jadwal->hari?>'
-       placeholder="Masukan Hari ">
+    
+      <select name='hari' id='hari' class="form-control required">
+        <option >Senin</option>
+        <option>Selasa</option>
+        <option>Rabu</option>
+        <option>kamis</option>
+        <option>Jum'at</option>
+        <option >Sabtu</option>
+        
+                                          </select>
+      
     </div>
  </div>
-
-    <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">Jam</label>
+ <br>
+<div>
+    <label for="inputEmail3" class="col-sm-3 control-label">Hari</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control required" id="jam" name='jam'
-      value='<?=$jadwal->jam?>'
-       placeholder="Masukan jam  ">
+    
+      <select name='jam' id='jam' class="form-control required">
+        <option >08.00-09.15</option>
+        <option>09.15-10.25</option>
+        <option>10.45-11.55</option>
+        <option>13.00-14.10</option>
+        <option>14.10-15.00</option>
+
+                                          </select>
+      
     </div>
  </div>
-
 
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-8">

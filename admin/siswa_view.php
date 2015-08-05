@@ -4,7 +4,7 @@
 
                         <div >
                         <h2 style="text-align: center"> Data Siswa</h2>
-                        <a href="index.php?m=admin&p=siswa_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
+                        <a href="menu.php?m=admin&p=siswa_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
                         <?php
 
                             //pagging
@@ -17,7 +17,7 @@
                             
                             //
                         ?>
-                        <table class="table table-hover table-condensed table-striped">
+                        <table class="table table-hover table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th><th> No Induk </th><th> Nama Siswa </th><th>Lahir</th><th>Tanggal</th><th>Jenis Kelamin</th><th>Alamat</th>
@@ -64,10 +64,10 @@
                                             <?=$siswa->kelas?>
                                         </td>
                                         <td>
-                                            <?=$siswa->foto?>
+                                           <?= "<img src='./admin/gambar/".$siswa->foto."' width='100px' height='100px'/>" ?>
                                         </td>
                                         <td>
-            <a href='index.php?m=admin&p=siswa_form&id=<?=$siswa -> id ?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
+            <a href='menu.php?m=admin&p=siswa_form&id=<?=$siswa -> id ?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
             <a href='admin/siswa_action.php?aksi=hapus&id=<?=$siswa -> id ?>' 
                 onclick="return confirm('Yakin data akan dihapus?') ";
                  class="btn btn-danger"><i class='glyphicon glyphicon-remove' ></i></a>
@@ -87,7 +87,7 @@
  echo "Jumlah record :".$jum."<br/>";
 for($x=1;$x<=$halaman;$x++){
 ?>
-Halaman : <a href="?m=admin&p=siswa_view&page=<?php echo $x ?>"><?php echo $x ?></a>
+<div class="pagination-sm">Page : <a href="?m=admin&p=siswa_view&page=<?php echo $x ?>"><?php echo $x ?></a></div>
 <?php
 }
  

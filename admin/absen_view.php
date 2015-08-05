@@ -2,7 +2,7 @@
 
                         <div >
                         <h2 style="text-align: center"> Data Absensi</h2>
-                        <a href="index.php?m=admin&p=absen_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
+                        <a href="menu.php?m=admin&p=absen_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
                         <?php
 
                             //pagging
@@ -50,7 +50,7 @@
                                             <?=$absen->keterangan?>
                                         </td>
                                         <td>
-            <a href='index.php?m=admin&p=absen_form&id=<?=$absen -> idabsen ?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
+            <a href='menu.php?m=admin&p=absen_form&id=<?=$absen -> idabsen ?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
             <a href='admin/absen_action.php?aksi=hapus&id=<?=$absen -> idabsen ?>' 
                 onclick="return confirm('Yakin data akan dihapus?') ";
                  class="btn btn-danger"><i class='glyphicon glyphicon-remove' ></i></a>

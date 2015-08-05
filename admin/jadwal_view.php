@@ -2,7 +2,7 @@
 
                         <div >
                         <h2 style="text-align: center"> Data jadwal Pelajaran</h2>
-                        <a href="index.php?m=admin&p=jadwal_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
+                        <a href="menu.php?m=admin&p=jadwal_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
                         <?php
 
                             //pagging
@@ -28,7 +28,7 @@
                                     <!---->
                                  <?php
 
-                                $sql="select * from tb_jadwal ";
+                                $sql ="SELECT id_guru,kelas, id_mapel, hari, jam FROM tb_jadwal, tb_kelas  where tb_kelas.id_kelas = tb_jadwal.id_kelas  limit $start,$per_hal";
                             $hasil=mysql_query($sql) or die(mysql_error(). "<br>".$sql);   
                        $no=1;
                         while($jadwal=mysql_fetch_object($hasil)){
@@ -36,7 +36,7 @@
                                     <tr>
                                         <td> <?= $no ?></td>
 										<td>
-                                            <?=$jadwal->id_kelas?>
+                                            <?=$jadwal->kelas?>
                                         </td>
                                         <td>
                                             <?=$jadwal->id_guru?>
@@ -51,7 +51,7 @@
                                             <?=$jadwal->jam?>
                                         </td>
                                         <td>
-            <a href='index.php?m=admin&p=jadwal_form&id=<?=$jadwal -> id ?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
+            <a href='menu.php?m=admin&p=jadwal_form&id=<?=$jadwal -> id ?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
             <a href='admin/jadwal_action.php?aksi=hapus&id=<?=$jadwal -> id ?>' 
                 onclick="return confirm('Yakin data akan dihapus?') ";
                  class="btn btn-danger"><i class='glyphicon glyphicon-remove' ></i></a>

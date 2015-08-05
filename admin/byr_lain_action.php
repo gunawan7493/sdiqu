@@ -37,8 +37,8 @@ $result = mysql_query($sql) or die(mysql_error());
 
 //check if query successful
 if ($result) {
-	header('location:../index.php?m=admin&p=byr_lain_view&status=0');
+	header('location:../menu.php?m=admin&p=byr_lain_view&status=0');
 } else {
-	header('location:../index.php?m=admin&p=byr_lain_view&status=1');
+	header('location:../menu.php?m=admin&p=byr_lain_view&status=1');
 }
 ?>

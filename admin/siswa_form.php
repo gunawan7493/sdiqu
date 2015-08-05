@@ -1,5 +1,23 @@
- 
-  <?php if ($aksi = 'tambah');
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="development-bundle/themes/ui-lightness/ui.all.css" />
+  
+  <script src="development-bundle/jquery-1.8.0.min.js"></script>
+<script src="development-bundle/ui/ui.core.js"> </script>
+<script src="development-bundle/ui/ui.datepicker.js"></script>
+<script src="development-bundle/ui/i18n/ui.datepicker-id.js"></script>
+  <script>
+  $(function() {
+    $( "#tanggal" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+  </script>
+</head>
+  <?php error_reporting(0); if ($aksi = 'tambah');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -9,11 +27,13 @@ if (isset($_GET['id'])) {
     $siswa = mysql_fetch_object($result);
 }
 ?>
-                      <form  id='form1' method="POST"
-                      action='admin/siswa_action.php'
+                      <form  id='form1' method="POST" 
+                      action='admin/siswa_action.php' enctype="multipart/form-data" 
                       class="form-horizontal" role="form"
 
                       >
+
+                      <h2 align="center"> FORM DATA SISWA</h2>
                       <input type='hidden' name='id' value='<?=$id?>'>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Nomor Induk</label>
@@ -45,7 +65,7 @@ if (isset($_GET['id'])) {
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Tanggal Lahir</label>
     <div class="col-sm-3">
-      <input type="text" class="form-control required" id="tgl" name='tgl'
+      <input type="text" class="form-control required" id="tanggal" name='tgl'
       value='<?=$siswa->tgl?>'
        placeholder="yyyy-mm-dd">
     </div>
@@ -53,10 +73,11 @@ if (isset($_GET['id'])) {
 
 <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Alamat</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control required" id="alamat" name='alamat'
+    <div class="col-sm-4">
+     
+      <textarea class="form-control required" id="alamat" name='alamat'
       value='<?=$siswa->alamat?>'
-       placeholder="Alamat">
+       placeholder="Alamat" cols="45" rows="5"></textarea>
     </div>
  </div>
 
@@ -64,8 +85,8 @@ if (isset($_GET['id'])) {
     <label for="inputEmail3" class="col-sm-3 control-label">No Telepon</label>
     <div class="col-sm-3">
       <input type="text" class="form-control required" id="no_telp" name='no_telp'
-      value='<?=$siswa->email?>'
-       placeholder="aaaaa@yyyy.com">
+      value='<?=$siswa->no_telp?>'
+       placeholder="Masukan NO Hp">
     </div>
  </div>
    
@@ -73,7 +94,7 @@ if (isset($_GET['id'])) {
     <label for="inputEmail3" class="col-sm-3 control-label">Nama Ayah</label>
     <div class="col-sm-3">
       <input type="text" class="form-control required" id="nm_ayah" name='nama_ayah'
-      value='<?=$siswa->no_telp?>'
+      value='<?=$siswa->nm_ayah?>'
        placeholder="Nama Ayah">
     </div>
  </div>
@@ -82,7 +103,7 @@ if (isset($_GET['id'])) {
     <label for="inputEmail3" class="col-sm-3 control-label">Nama Ibu</label>
     <div class="col-sm-3">
       <input type="text" class="form-control required" id="nm_ibu" name='nama_ibu'
-      value='<?=$siswa->nama_ibu?>'
+      value='<?=$siswa->nm_ibu?>'
        placeholder="Nama Ibu">
     </div>
  </div>
@@ -126,15 +147,14 @@ if (isset($_GET['id'])) {
  <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Foto</label>
     <div class="col-sm-3">
-      <input type="text" class="form-control required" id="foto" name='foto'
-      value='<?=$siswa->foto?>'
-       placeholder="foto">
-    </div>
+      Upload Gambar (Ukuran Maks = 1 MB)
+        <input type="file" name='foto' required />
+</div>
  </div>
 
  <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Jenis Kelamin</label>
-    	<?php if ($absen->jk=="L")
+    	<?php if ($siswa->jk=="L")
 		{$l="checked"; $p="";}
 		else{ $p="checked"; $l="";} 
 		?>
@@ -166,7 +186,7 @@ if (isset($_GET['id'])) {
  <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Tanggal Masuk</label>
     <div class="col-sm-3">
-      <input type="text" class="form-control required" id="tgl_masuk" name='tgl_masuk'
+      <input type="text" class="form-control required" id="tanggal" name='tgl_masuk'
       value='<?=$siswa->tgl_masuk?>'
        placeholder="Tanggal Masuk">
     </div>
@@ -201,10 +221,12 @@ if (isset($_GET['id'])) {
 
  <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Alamat Wali</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control required" id="alamat_wali" name='alamat_wali'
+    <div class="col-sm-4">
+   
+      <textarea class="form-control required" id="alamat_wali" name='alamat_wali'
       value='<?=$siswa->alamat_wali?>'
-       placeholder="Alamat Wali">
+       placeholder="Alamat Wali" cols="45" rows="5"></textarea>
+      
     </div>
  </div>
 
@@ -255,10 +277,11 @@ if (isset($_GET['id'])) {
 
  <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Alamat Orang Tua</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control required" id="almt_ortu" name='almt_ortu'
+    <div class="col-sm-4">
+      
+      <textarea class="form-control required" id="almt_ortu" name='almt_ortu'
       value='<?=$siswa->almt_ortu?>'
-       placeholder="Alamat Orang Tua">
+       placeholder="Alamat Orang Tua" cols="45" rows="5"></textarea>
     </div>
  </div>
 

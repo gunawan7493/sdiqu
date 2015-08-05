@@ -2,7 +2,7 @@
 
                         <div >
                         <h2 style="text-align: center"> Data Nilai Siswa</h2>
-                        <a href="index.php?m=admin&p=nilai_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
+                        <a href="menu.php?m=admin&p=nilai_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
                         <?php
 
                             //pagging
@@ -18,7 +18,7 @@
                         <table class="table table-hover table-condensed table-striped">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th> No Induk </th><th>ID Mata Pelajaran</th><th>Tugas</th>
+                                        <th>#</th><th> No Induk </th><th>ID Mata Pelajaran</th><th>UH 1</th><th>UH 2</th><th>UH 3</th>
                                         <th>UTS</th><th>UAS</th><th>Rata-Rata</th><th>Kelas</th><th>semester</th><th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -28,7 +28,7 @@
                                     <!---->
                                  <?php
 
-                                $sql="select * from tb_nilai";
+                                $sql="select * from tb_nilai limit $start, $per_hal";
                             $hasil=mysql_query($sql) or die(mysql_error(). "<br>".$sql);   
                        $no=1;
                         while($nilai=mysql_fetch_object($hasil)){
@@ -42,7 +42,13 @@
                                             <?=$nilai->id_mapel?>
                                         </td>
                                         <td>
-                                            <?=$nilai->tugas?>
+                                            <?=$nilai->uh1?>
+                                        </td>
+                                        <td>
+                                            <?=$nilai->uh2?>
+                                        </td>
+                                        <td>
+                                            <?=$nilai->uh3?>
                                         </td>
 										<td>
                                             <?=$nilai->uts?>
@@ -62,7 +68,7 @@
                                         
 
                                         <td>
-            <a href='index.php?m=admin&p=nilai_form&id=<?=$nilai -> id?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
+            <a href='menu.php?m=admin&p=nilai_form&id=<?=$nilai -> id?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
             <a href='admin/nilai_action.php?aksi=hapus&id=<?=$nilai -> id ?>' 
                 onclick="return confirm('Yakin data akan dihapus?') ";
                  class="btn btn-danger"><i class='glyphicon glyphicon-remove' ></i></a>

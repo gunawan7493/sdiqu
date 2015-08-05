@@ -13,7 +13,6 @@ $tgl =$_POST['tgl'];
 $alamat = $_POST['alamat'];
 $email = $_POST['email'];
 $telp = $_POST['no_telp'];
-$foto =$_POST['foto'];
 $pelajaran = $_POST['pelajaran'];
 $golongan = $_POST['golongan'];
 $tgl_masuk =$_POST['tgl_masuk'];
@@ -26,7 +25,7 @@ $aksi = mysql_real_escape_string($_REQUEST['aksi']);
 $id = $_REQUEST['id'];
 
 if ($aksi == 'tambah') {
-
+	$foto=$_FILES['foto']['name'];
 	$sql = "INSERT INTO tb_guru(nama, nip, lahir, tgl, alamat, email, no_telp, foto, pelajaran, golongan, tgl_masuk, status, 
 		agama,jk)
 		VALUES('$nama','$nip','$lahir','$tgl','$alamat','$email','$telp','$foto','$pelajaran','$golongan','$tgl_masuk', '$status',
@@ -34,8 +33,9 @@ if ($aksi == 'tambah') {
 } 
 
 	else if ($aksi == 'edit') {
-	$sql = "update tb_guru set nama='$nama',nip='$nip',lahir='$lahir',tgl='$tgl',alamat='$alamat',email='$email',telp='$no_telp',
-	foto='$foto', pelajaran='$pelajaran',golongan='$golongan',tgl_masuk='&tgl_masuk',status='$status',agama='$agama',jk='$jk')
+		$foto=$_FILES['foto']['name'];
+	$sql = "update tb_guru set nama='$nama',nip='$nip',lahir='$lahir',tgl='$tgl',alamat='$alamat',email='$email',no_telp='$telp',
+	foto='$foto', pelajaran='$pelajaran',golongan='$golongan',tgl_masuk='&tgl_masuk',status='$status',agama='$agama',jk='$jk'
     where id='$id'";
 } 
 
@@ -44,11 +44,13 @@ if ($aksi == 'tambah') {
 }
 
 $result = mysql_query($sql) or die(mysql_error());
+//pindah ke folder
+move_uploaded_file($_FILES['foto']['tmp_name'], "../admin/gambar/".$_FILES['foto']['name']);
 
 //check if query successful
 if ($result) {
-	header('location:../index.php?m=admin&p=guru_view&status=0');
+	header('location:../menu.php?m=admin&p=guru_view&status=0');
 } else {
-	header('location:../index.php?m=admin&p=guru_view&status=1');
+	header('location:../menu.php?m=admin&p=guru_view&status=1');
 }
 ?>

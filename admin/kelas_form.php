@@ -1,5 +1,5 @@
  
-  <?php if ($aksi = 'tambah');
+  <?php error_reporting(0); if ($aksi = 'tambah');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

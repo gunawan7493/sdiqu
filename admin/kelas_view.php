@@ -2,7 +2,7 @@
 
                         <div >
                         <h2 style="text-align: center"> Data Kelas Siswa</h2>
-                        <a href="index.php?m=admin&p=kelas_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
+                        <a href="menu.php?m=admin&p=kelas_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
                         <?php
 
                             //pagging
@@ -47,7 +47,7 @@
 					
 
                                         <td>
-            <a href='index.php?m=admin&p=kelas_form&id=<?=$kelas -> id_kelas?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
+            <a href='menu.php?m=admin&p=kelas_form&id=<?=$kelas -> id_kelas?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
             <a href='admin/kelas_action.php?aksi=hapus&id=<?=$kelas -> id_kelas?>' 
                 onclick="return confirm('Yakin data akan dihapus?') ";
                  class="btn btn-danger"><i class='glyphicon glyphicon-remove' ></i></a>

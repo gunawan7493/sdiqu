@@ -2,7 +2,7 @@
 
                         <div >
                         <h2 style="text-align: center"> DAFTAR USER</h2>
-                        <a href="index.php?m=admin&p=user_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
+                        <a href="menu.php?m=admin&p=user_form" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> Tambah</a>
                         <?php
 
                             //pagging
@@ -45,7 +45,7 @@
                                         </td>
 										
                                         <td>
-            <a href='index.php?m=admin&p=user_form&id=<?=$user -> id ?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
+            <a href='menu.php?m=admin&p=user_form&id=<?=$user -> id ?>' class="btn btn-info"><i class='glyphicon glyphicon-pencil'></i></a>&nbsp;
             <a href='admin/user_action.php?aksi=hapus&id=<?=$user -> id ?>' 
                 onclick="return confirm('Yakin data akan dihapus?') ";
                  class="btn btn-danger"><i class='glyphicon glyphicon-remove' ></i></a>

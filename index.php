@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,134 +10,86 @@
 
     <title>SDIQu Al-Bahjah 03 Tulungagung</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-	<style type='text/css'>
-		body {
-  padding-top: 50px;
-}
-
-.starter-template {
-  padding: 40px 15px;
-  text-align: left;
-
-}
-.caret-up {
-    width: 0; 
-    height: 0; 
-    border-left: 4px solid rgba(0, 0, 0, 0);
-    border-right: 4px solid rgba(0, 0, 0, 0);
-    border-bottom: 4px solid;
     
-    display: inline-block;
-    margin-left: 2px;
-    vertical-align: middle;
-}
-
-	</style>
-    <!-- Custom styles for this template -->
-  
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-
-
-
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">SDIQU Al-Bahjah 03 </a>
-        </div>
-        <div class="navbar-collapse collapse">
-          
-          <ul class="navbar-nav nav">
-            <li class="active"><a href="index.php">Home</a></li>
-            
-            <li class="dropdown">
-           		<a href="#" data-toggle="dropdown" class="dropdown-toggle">Master Data <b class="caret"></b></a>
-            	<ul class="dropdown-menu" id="menu1">
-            		<li><a href="index.php?m=admin&p=guru_view">Data Guru</a></li>
-                    <li><a href="index.php?m=admin&p=siswa_view">Data Siswa</a></li>
-                    <li><a href="index.php?m=admin&p=kelas_view">Data kelas</a></li>
-            	</ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Akademik <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-             		<li><a href="index.php?m=admin&p=akademik_view">Data Akademik</a></li>
-             		<li><a href="index.php?m=admin&p=absen_view">Data Absen</a></li>
-             		<li><a href="index.php?m=admin&p=nilai_view">Data Nilai</a></li>
-                </ul>
-            </li>
-          
-			<li class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Kurikulum <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-             		<li><a href="index.php?m=admin&p=tahun_view">Tahun Ajaran</a></li>
-             		<li><a href="index.php?m=admin&p=kurikulum_view">Daftar Kurikulum</a></li>
-             		<li><a href="index.php?m=admin&p=jadwal_view">Jadwal Pelajaran</a></li>
-             		<li><a href="index.php?m=admin&p=mapel_view">Daftar Pelajaran</a></li>
-                </ul>
-            </li>
-
-          <li class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Pembayaran <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-             		<li><a href="index.php?m=admin&p=spp_view">Data Bayaran SPP</a></li>
-             		<li><a href="index.php?m=admin&p=byr_lain_view">Data Pembayaran lain</a></li>
-                </ul>
-            </li>
-			<li><a href="index.php?m=admin&p=perpus_view">Buku Perpustakaan</a></li>
-			<li><a href="index.php?m=admin&p=user_view">Daftar User</a></li>
-			<li><a href="#">Logout</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
-    <div class="container">
-
-      <div class="starter-template">
-        <?php
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="assets/js/jquery-1.11.0.js"></script>
+<script type="text/javascript"> 
+ $(document).ready(function() { 
+  $(".text").val(''); 
+  $("#username").focus(); 
+ }); 
+ function validasi(){ 
+ var username = $("#username").val(); 
+ var password = $("#password").val(); 
+ if (username.length == 0){ 
+  alert("Anda belum mengisikan Username."); 
+  $("#username").focus(); 
+  return false(); 
+ }   
+ if (password.length == 0){ 
+  alert("Anda belum mengisikan Password."); 
+  $("#password").focus(); 
+  return false(); 
+ } 
+ return true(); 
+ } 
+</script> 
+<style type="text/css"> 
+.right { 
+ float:right 
+} 
+button {margin: 0; padding: 0;} 
+button {margin: 2px; position: relative; padding: 4px 4px 4px 2px; 
+cursor: pointer; float: left; list-style: none;} 
+button span.ui-icon {float: left; margin: 0 4px;} 
+</style>
+	</head>
+		<body> <div class="row"> </div>
+        		<div class="row"><h2 style="text-align:center"> Selamat Datang Di Sistem Informasi Sekolah</h2>
+                					<h4 style="text-align:center"> SDIQu Al-Bahjah 03 Tulungagung</h4>
+				<div class="col-lg-12">
+                	<div class="col-lg-4"></div>
                     
-                    include('inc/config.php');
-                    if (!isset($_GET['p'])) {
-                        include ('./admin/admin.php');
-                    } else {
-                    	 $modul = $_GET['m'];
-                        $page = $_GET['p'];
-                       
-                        include $modul . '/' . $page . ".php";
-                    }
-					?>
-      </div>
+                    <div class="col-lg-4">
+                   	<div class="panel panel-default">
+                    <div class="panel-heading">
+                    <div class="panel-title" style="text-align:center"><h4>Login User</h4></div></div>
+                    <div class="panel-body"> 
+                    	<form name="login" action="log.php?op=in" method="post" onSubmit="return validasi(this)">
+                        <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                                <div class="col-sm-7">
+                          <input type="text" class="form-control required" name="userid" id="username" placeholder="Masukkan Username">                     </div>
+                             </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
+                                <div class="col-sm-7">
+                                  <input type="password" class="form-control required" name="psw" id="password" placeholder="Masukkan Password">
+                                </div>
+                             </div>
+                            <br>
+                              <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-8">
+                                  <button type="submit" name="submit" class="btn-primary" > Login </button>
+                                  
+                                </div>
+                              </div>
+                              
+                    	</form>
+                    </div>
+                    </div>
+                    </div>
+                    
+                </div>
+                    <div class="col-lg-4"> </div>
+                </div>
 
-    </div><!-- /.container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- jQuery Version 1.11.0 -->
-    <script src="assets/js/jquery-1.11.0.js"></script>
+		</body>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    </body>
-</html>
+
+
+
+	</html>

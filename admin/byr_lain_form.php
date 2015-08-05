@@ -1,5 +1,5 @@
  
-  <?php if ($aksi = 'tambah');
+  <?php error_reporting(0); if ($aksi = 'tambah');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -28,10 +28,12 @@ if (isset($_GET['id'])) {
 
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control required" id="deskripsi" name='deskripsi'
+    <div class="col-sm-6">
+    
+      <textarea class="form-control required" id="deskripsi" name='deskripsi'
       value='<?=$bayaran_lain->deskripsi?>'
-       placeholder="Deskripsi Pembayaran ">
+       placeholder="Deskripsi Pembayaran " cols="45" rows="5"></textarea>
+    
     </div>
  </div>
 

@@ -19,7 +19,7 @@ $pekerjaan_ayah=$_POST['pekerjaan_ayah'];
 $pekerjaan_ibu=$_POST['pekerjaan_ibu'];
 $kelas = $_POST['kelas'];
 $email = $_POST['email'];
-$foto =$_POST['foto'];
+
 
 $angkatan = $_POST['angkatan'];
 $jk = $_POST['jk'];
@@ -36,7 +36,7 @@ $di_kelas=$_POST['di_kelas'];
 $nm_sek_asal=$_POST['nm_sek_asal'];
 $almt_sek_asal=$_POST['almt_sek_asal'];
 $almt_ortu=$_POST['almt_ortu'];
-$no_telp_ortu=$_POST['telp_ortu'];
+$telp_ortu=$_POST['telp_ortu'];
 
 
 $aksi = mysql_real_escape_string($_REQUEST['aksi']);
@@ -45,21 +45,45 @@ $id = $_REQUEST['id'];
 
 if ($aksi == 'tambah') {
 
+$foto=$_FILES['foto']['name'];
 	$sql = "INSERT INTO tb_siswa(nis, nama, lahir, tgl, alamat, no_telp, nm_ayah, nm_ibu, pekerjaan_ayah,pekerjaan_ibu, kelas, email,
 		foto, angkatan, jk, agama, tgl_masuk, no_telp_wali, gol_darah, nama_wali, alamat_wali, anak_ke, status_anak, di_kelas,
 		nm_sek_asal, almt_sek_asal,almt_ortu, telp_ortu)
 
 		VALUES('$nis', '$nama', '$lahir', '$tgl', '$alamat', '$telp', '$nama_ayah', '$nama_ibu', '$pekerjaan_ayah', '$pekerjaan_ibu',
 			'$kelas', '$email', '$foto', '$angkatan', '$jk', '$agama', '$tgl_masuk', '$no_telp_wali', '$gol_darah', '$nama_wali',
-			'$alamat_wali', '$anak_ke', '$status_anak', '$di_kelas', '$nm_sek_asal', '$almt_sek_asal', '$almt_ortu', '$no_telp_ortu')";
+			'$alamat_wali', '$anak_ke', '$status_anak', '$di_kelas', '$nm_sek_asal', '$almt_sek_asal', '$almt_ortu', '$telp_ortu')";
 } 
 
 	else if ($aksi == 'edit') {
-	$sql = "update tb_siswa set nis='$nis',nama='$nama',lahir='$lahir',tgl='$tgl',alamat='$alamat',no_telp='$telp', nm_ayah='$nama_ayah',
-			nm_ibu='$nama_ibu', pekerjaan_ayah='$pekerjaan_ayah', pekerjaan_ibu='$pekerjaan_ibu', kelas='$kelas', email='$email', foto='$foto',
-			angkatan='$angkatan', jk='$jk', agama='$agama', tgl_masuk='$tgl_masuk', no_telp_wali='$no_telp_wali', gol_darah=$gol_darah,
-			nama_wali='$nama_wali', alamat_wali='$alamat_wali', anak_ke='$anak_ke', status_anak='$status_anak', di_kelas=$di_kelas, nm_sek_asal='$nm_sek_asal',
-			almt_sek_asal='$almt_sek_asal',almt_ortu='almt_ortu', telp_ortu='$telp_ortu'
+		$foto=$_FILES['foto']['name'];
+	$sql = "update tb_siswa set nis='$nis',
+			nama='$nama',
+			lahir='$lahir',
+			tgl='$tgl',
+			alamat='$alamat',
+			no_telp='$telp',
+			nm_ayah='$nama_ayah',
+			nm_ibu='$nama_ibu',
+			pekerjaan_ayah='$pekerjaan_ayah',
+			pekerjaan_ibu='$pekerjaan_ibu',
+			kelas='$kelas', email='$email',
+			foto='$foto',
+			angkatan='$angkatan',
+			jk='$jk', 
+			agama='$agama', 
+			tgl_masuk='$tgl_masuk',
+			no_telp_wali='$no_telp_wali',
+			gol_darah=$gol_darah,
+			nama_wali='$nama_wali',
+			alamat_wali='$alamat_wali',
+			anak_ke='$anak_ke',
+			status_anak='$status_anak',
+			di_kelas=$di_kelas,
+			nm_sek_asal='$nm_sek_asal',
+			almt_sek_asal='$almt_sek_asal',
+			almt_ortu='almt_ortu',
+			telp_ortu='$telp_ortu'
     where id='$id'";
 } 
 
@@ -68,11 +92,13 @@ if ($aksi == 'tambah') {
 }
 
 $result = mysql_query($sql) or die(mysql_error());
+//pindah ke folder
+move_uploaded_file($_FILES['foto']['tmp_name'], "../admin/gambar/".$_FILES['foto']['name']);
 
 //check if query successful
 if ($result) {
-	header('location:../index.php?m=admin&p=siswa_view&status=0');
+	header('location:../menu.php?m=admin&p=siswa_view&status=0');
 } else {
-	header('location:../index.php?m=admin&p=siswa_view&status=1');
+	header('location:../menu.php?m=admin&p=siswa_view&status=1');
 }
 ?>

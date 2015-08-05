@@ -1,5 +1,33 @@
- 
-  <?php if ($aksi = 'tambah');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="development-bundle/themes/ui-lightness/ui.all.css" />
+  
+  <script src="development-bundle/jquery-1.8.0.min.js"></script>
+<script src="development-bundle/ui/ui.core.js"> </script>
+<script src="development-bundle/ui/ui.datepicker.js"></script>
+<script src="development-bundle/ui/i18n/ui.datepicker-id.js"></script>
+  <script>
+  $(function() {
+    $( "#tanggal" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+    $( "#tanggala" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+  
+
+  </script>
+  
+</head> 
+
+  <?php 
+  error_reporting(0);
+  if ($aksi = 'tambah');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -14,6 +42,7 @@ if (isset($_GET['id'])) {
                       class="form-horizontal" role="form"
 
                       >
+                      <h2 align="center" > FORM DATA AKADEMIK </h2>
                       <input type='hidden' name='id' value='<?=$id?>'>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Nama Kegiatan</label>
@@ -26,8 +55,8 @@ if (isset($_GET['id'])) {
 
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Tanggal Kegiatan</label>
-    <div class="col-sm-3">
-      <input type="text" class="form-control required" id="tgl" name='tgl'
+    <div class="col-sm-2">
+      <input type="text" class="form-control required" id="tanggal" name='tgl'
       value='<?=$akademik->tgl?>'
        placeholder="Tanggal Kegiatan ">
     </div>
@@ -35,22 +64,23 @@ if (isset($_GET['id'])) {
 
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Kegiatan</label>
-    <div class="col-sm-3">
-      <input type="text" class="form-control required" id="kegiatan" name='kegiatan'
+    <div class="col-sm-5">
+      
+      <textarea class="form-control required" id="kegiatan" name='kegiatan'
       value='<?=$akademik->kegiatan?>'
-       placeholder="Uraian kegiatan ">
+       placeholder="Uraian kegiatan " cols="45" rows="5"></textarea>
+      
     </div>
  </div>
 
     <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">Tanggal akhir</label>
-    <div class="col-sm-3">
-      <input type="text" class="form-control required" id="tgl_akhir" name='tgl_akhir'
+    <label for="inputEmail3" class="col-sm-3 control-label">Tanggal Akhir</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control required" id="tanggal" name='tgl_akhir'
       value='<?=$akademik->tgl_akhir?>'
-       placeholder="Tanggal Akhir Kegiatan">
+       placeholder="Tanggal Kegiatan ">
     </div>
  </div>
-
    
 
 
